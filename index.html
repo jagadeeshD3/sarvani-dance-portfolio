@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sarvani — Classical dancer, The Hague</title>
+  <meta name="description" content="Sarvani is a professional Bharatanatyam dancer based in The Hague, performing at Indian community events, festivals and private celebrations." />
+  <meta name="theme-color" content="#1c0d16" />
+  <!-- Link preview when shared on WhatsApp / LinkedIn / Instagram: upload assets/images/share.jpg (1200×630) -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Sarvani — Classical dancer, The Hague" />
+  <meta property="og:description" content="Bharatanatyam performances for community events, festivals and celebrations in the Netherlands." />
+  <meta property="og:image" content="assets/images/share.jpg" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <!-- 3D stage (lotus + petals) -->
+  <canvas id="stage" aria-hidden="true"></canvas>
+
+  <header class="bar">
+    <a class="bar__name" href="#top" data-bind="name">Sarvani</a>
+    <nav class="bar__nav" aria-label="Sections">
+      <a href="#about" data-i18n="nav.about">About</a>
+      <a href="#forms" data-i18n="nav.forms">Dance</a>
+      <a href="#navarasa" data-i18n="nav.rasa">Navarasa</a>
+      <a href="#videos" data-i18n="nav.videos">Videos</a>
+      <a href="#gallery" data-i18n="nav.gallery">Gallery</a>
+      <a href="#classes" data-i18n="nav.classes">Classes</a>
+      <a href="#contact" class="bar__cta" data-i18n="nav.contact">Book</a>
+    </nav>
+    <div class="lang" role="group" aria-label="Language">
+      <button type="button" data-lang="en" aria-pressed="true">EN</button>
+      <button type="button" data-lang="nl" aria-pressed="false">NL</button>
+    </div>
+    <button class="bar__menu" type="button" aria-expanded="false" aria-controls="mobile-nav" data-i18n="menu">Menu</button>
+  </header>
+  <nav id="mobile-nav" class="mnav" hidden aria-label="Sections">
+    <a href="#about" data-i18n="nav.about">About</a>
+    <a href="#forms" data-i18n="nav.forms">Dance</a>
+    <a href="#navarasa" data-i18n="nav.rasa">Navarasa</a>
+    <a href="#videos" data-i18n="nav.videos">Videos</a>
+    <a href="#gallery" data-i18n="nav.gallery">Gallery</a>
+    <a href="#classes" data-i18n="nav.classes">Classes</a>
+    <a href="#contact" data-i18n="nav.contact">Book</a>
+  </nav>
+
+  <main id="main">
+    <!-- HERO -->
+    <section id="top" class="hero">
+      <p class="hero__script" aria-hidden="true" data-bind="nameDevanagari"></p>
+      <div class="hero__text">
+        <h1 class="hero__name"><span class="hero__letters" data-letters="name">Sarvani</span><span class="hero__title" data-bind="title">Classical dancer</span></h1>
+        <p class="hero__role" data-bind="role"></p>
+        <p class="hero__place" data-bind="location"></p>
+        <div class="hero__actions">
+          <a class="btn btn--gold" href="#videos" data-i18n="hero.watch">Watch her dance</a>
+          <a class="btn btn--line" href="#contact" data-i18n="hero.book">Book a performance</a>
+        </div>
+      </div>
+      <p class="hero__hint"><span data-i18n="hero.hint">Scroll to open the lotus</span><i aria-hidden="true"></i></p>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="sec about">
+      <div class="about__media">
+        <figure class="arch tilt">
+          <img data-src-key="aboutImage" alt="" data-ph="4:5" />
+        </figure>
+      </div>
+      <div class="about__text">
+        <h2 class="h2" data-i18n="about.title">A life in rhythm</h2>
+        <div class="prose" data-bind-paras="about"></div>
+        <p class="about__guru" data-bind="guru"></p>
+        <dl class="facts" id="facts"></dl>
+      </div>
+    </section>
+
+    <!-- DANCE FORMS -->
+    <section id="forms" class="sec forms">
+      <header class="sec__head">
+        <h2 class="h2" data-i18n="forms.title">The dance forms</h2>
+        <p class="lede" data-i18n="forms.lede">Four traditions, each with its own grammar of footwork, posture and expression.</p>
+      </header>
+      <div class="forms__row" id="forms-row"></div>
+    </section>
+
+    <!-- NAVARASA -->
+    <section id="navarasa" class="sec rasa">
+      <div class="rasa__stage">
+        <figure class="arch arch--tall tilt">
+          <img id="rasa-img" alt="" data-ph="4:5" />
+        </figure>
+        <p class="rasa__now" aria-live="polite"><span id="rasa-script"></span><span id="rasa-meaning"></span></p>
+      </div>
+      <div class="rasa__side">
+        <h2 class="h2" data-i18n="rasa.title">Nine emotions, one face</h2>
+        <p class="lede" data-i18n="rasa.lede">In classical dance the story is told through abhinaya, expression. The Natya Shastra names nine rasas. Choose one to see it.</p>
+        <div class="rasa__grid" id="rasa-grid" role="listbox" aria-label="Rasas"></div>
+      </div>
+    </section>
+
+    <!-- VIDEOS -->
+    <section id="videos" class="sec videos">
+      <header class="sec__head">
+        <h2 class="h2" data-i18n="videos.title">On stage</h2>
+        <p class="lede" data-i18n="videos.lede">Recorded performances. Videos load only when you press play.</p>
+      </header>
+      <div class="videos__grid" id="videos-grid"></div>
+    </section>
+
+    <!-- GALLERY -->
+    <section id="gallery" class="sec gallery">
+      <header class="sec__head">
+        <h2 class="h2" data-i18n="gallery.title">Gallery</h2>
+        <p class="lede" data-i18n="gallery.lede">Drag or use the arrows to turn the ring. Select a photo to view it full size.</p>
+      </header>
+      <div class="ring" id="ring" tabindex="0" aria-roledescription="carousel" aria-label="Photo gallery">
+        <div class="ring__spin" id="ring-spin"></div>
+      </div>
+      <div class="ring__ctrl">
+        <button type="button" class="round" id="ring-prev" data-i18n-aria="gallery.prev" aria-label="Previous photo">‹</button>
+        <button type="button" class="round" id="ring-next" data-i18n-aria="gallery.next" aria-label="Next photo">›</button>
+      </div>
+    </section>
+
+    <!-- JOURNEY -->
+    <section id="journey" class="sec journey">
+      <h2 class="h2" data-i18n="journey.title">The journey so far</h2>
+      <ol class="timeline" id="timeline"></ol>
+    </section>
+
+    <!-- CLASSES -->
+    <section id="classes" class="sec classes">
+      <div class="classes__inner">
+        <header class="sec__head">
+          <h2 class="h2" data-i18n="classes.title">Learn, host, collaborate</h2>
+          <p class="lede" data-i18n="classes.lede">Classes in The Hague and online, workshops and performances anywhere in the Netherlands and Europe.</p>
+        </header>
+        <ul class="offer" id="offer"></ul>
+      </div>
+    </section>
+
+    <!-- QUOTES (hidden when empty) -->
+    <section id="quotes" class="sec quotes" hidden>
+      <h2 class="h2" data-i18n="quotes.title">Kind words</h2>
+      <div class="quotes__list" id="quotes-list"></div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="sec contact">
+      <div class="contact__intro">
+        <h2 class="h2" data-i18n="contact.title">Get in touch</h2>
+        <p class="lede" data-i18n="contact.lede">For classes, workshops or a performance at your event, send a short message and I will reply within two days.</p>
+        <p class="contact__mail"><a id="mail-link" href="#"></a></p>
+        <ul class="socials" id="socials"></ul>
+      </div>
+      <form class="form" id="form" novalidate>
+        <label><span data-i18n="form.name">Your name</span><input name="name" required autocomplete="name" /></label>
+        <label><span data-i18n="form.email">Email</span><input name="email" type="email" required autocomplete="email" /></label>
+        <label><span data-i18n="form.type">What is it about?</span>
+          <select name="type">
+            <option data-i18n="form.t1">Community event</option>
+            <option data-i18n="form.t2">Festival</option>
+            <option data-i18n="form.t3">Private celebration</option>
+            <option data-i18n="form.t4">Cultural programme</option>
+            <option data-i18n="form.t5">Something else</option>
+          </select>
+        </label>
+        <label><span data-i18n="form.date">Date, if you have one</span><input name="date" type="date" /></label>
+        <label class="form__wide"><span data-i18n="form.msg">Message</span><textarea name="message" rows="5" required></textarea></label>
+        <button class="btn btn--gold" type="submit" data-i18n="form.send">Send message</button>
+        <p class="form__status" id="form-status" role="status"></p>
+      </form>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <p>© <span id="year"></span> <span data-bind="name"></span></p>
+    <p data-bind="location"></p>
+  </footer>
+
+  <!-- Lightbox -->
+  <dialog class="lightbox" id="lightbox">
+    <img id="lightbox-img" alt="" />
+    <p id="lightbox-cap"></p>
+    <button type="button" class="round lightbox__close" id="lightbox-close" data-i18n-aria="close" aria-label="Close">×</button>
+  </dialog>
+
+  <script src="js/config.js"></script>
+  <script src="js/main.js" defer></script>
+  <script src="js/scene.js" defer></script>
+</body>
+</html>
